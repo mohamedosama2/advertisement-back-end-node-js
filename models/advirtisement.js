@@ -1,0 +1,46 @@
+const mongoose=require('mongoose');
+const Schema=mongoose.Schema;
+const advirtisementSchema=new Schema({
+    title:{
+        type:String,
+        required:true
+    },
+    category:{
+        type:String,
+        required:true
+    },
+    number:{
+        type:String,
+        required:true
+    },
+    city:{
+        type:String,
+        required:true
+    },
+    address:{
+        type:String
+    },
+    image:[{
+        type:String
+    }],
+    description:{
+        type:String,
+        required:true
+    },
+    likes:[
+        {
+        number:{
+            type:Number
+        },
+        user:{
+            type:Schema.Types.ObjectId,
+            ref:'user'
+        }
+    }],
+    orgId:{
+        type:Schema.Types.ObjectId,
+        ref:'organization',
+        required:true
+    }
+})
+module.exports=mongoose.model('advirtisement',advirtisementSchema);

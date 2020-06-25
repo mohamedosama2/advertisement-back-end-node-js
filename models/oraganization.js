@@ -1,0 +1,39 @@
+const mongoose=require('mongoose');
+const Schema=mongoose.Schema;
+const organizationSchema=new Schema({
+    email:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    nameAr:{
+        type:String
+    },
+    nameEn:{
+        type:String
+    },
+    address:[{
+        type:String
+    }],
+    city:[{
+        type:String
+    }],
+    number:[{
+        type:String
+    }]
+    ,
+    overview:{
+        type:String
+    },
+    followers:[{
+        type:Schema.Types.ObjectId,
+        ref:'user'
+    }],
+    image:{
+        type:String
+    }  
+})
+module.exports=mongoose.model('organization',organizationSchema);
